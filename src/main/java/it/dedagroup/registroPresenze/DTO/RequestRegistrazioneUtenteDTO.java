@@ -1,6 +1,6 @@
 package it.dedagroup.registroPresenze.DTO;
 
-import it.dedagroup.registroPresenze.model.ModalitaLavoro;
+
 import it.dedagroup.registroPresenze.model.Occupazione;
 import it.dedagroup.registroPresenze.model.Ruolo;
 import jakarta.validation.constraints.NotBlank;
@@ -26,7 +26,6 @@ public class RequestRegistrazioneUtenteDTO {
 	private int eta;
 	@NotNull
 	private Ruolo ruolo;
-	private ModalitaLavoro modalitaLavoro;
 	private Occupazione occupazione;
 	
 	
@@ -72,12 +71,7 @@ public class RequestRegistrazioneUtenteDTO {
 	public void setRuolo(Ruolo ruolo) {
 		this.ruolo = ruolo;
 	}
-	public ModalitaLavoro getModalitaLavoro() {
-		return modalitaLavoro;
-	}
-	public void setModalitaLavoro(ModalitaLavoro modalitaLavoro) {
-		this.modalitaLavoro = modalitaLavoro;
-	}
+
 	public Occupazione getOccupazione() {
 		return occupazione;
 	}

@@ -12,7 +12,6 @@ public class ResponseUtenteDTO {
     private String username;
     private int eta;
     private Ruolo ruolo;
-    private ModalitaLavoro modalitaLavoro;
     private Occupazione occupazione;
     
     public ResponseUtenteDTO() {}
@@ -49,13 +48,7 @@ public class ResponseUtenteDTO {
 	public void setRuolo(Ruolo ruolo) {
 		this.ruolo = ruolo;
 	}
-	public ModalitaLavoro getModalitaLavoro() {
-		return modalitaLavoro;
-	}
 
-	public void setModalitaLavoro(ModalitaLavoro modalitaLavoro) {
-		this.modalitaLavoro = modalitaLavoro;
-	}
 
 	public Occupazione getOccupazione() {
 		return occupazione;

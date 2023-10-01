@@ -19,7 +19,6 @@ uDTO.setCognome(u.getCognome());
 uDTO.setUsername(u.getUsername());
 uDTO.setEta(u.getEta());
 uDTO.setRuolo(u.getRuolo());
-uDTO.setModalitaLavoro(u.getModalitaLavoro());
 uDTO.setOccupazione(u.getOccupazione());
 return uDTO;
 }
@@ -35,7 +34,6 @@ u.setCognome(uDTO.getCognome());
 u.setUsername(uDTO.getUsername());
 u.setEta(uDTO.getEta());
 u.setRuolo(uDTO.getRuolo());
-u.setModalitaLavoro(uDTO.getModalitaLavoro());
 u.setOccupazione(uDTO.getOccupazione());
 return u;
 }

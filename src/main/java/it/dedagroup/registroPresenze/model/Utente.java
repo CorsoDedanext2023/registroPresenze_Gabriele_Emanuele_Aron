@@ -16,7 +16,6 @@ public class Utente {
     private String passwordRipetuta;
     private int eta;
     private Ruolo ruolo;
-    private ModalitaLavoro modalitaLavoro;
     private Occupazione occupazione;
 
     public Utente() {
@@ -32,7 +31,6 @@ public class Utente {
         this.passwordRipetuta = passwordRipetuta;
         this.eta = eta;
         this.ruolo = ruolo;
-        this.modalitaLavoro = modalitaLavoro;
         this.occupazione = occupazione;
     }
     
@@ -45,7 +43,6 @@ public class Utente {
     	this.passwordRipetuta = regUtenteDTO.getPasswordRipetuta();
     	this.eta = regUtenteDTO.getEta();
     	this.ruolo = regUtenteDTO.getRuolo();
-    	this.modalitaLavoro = regUtenteDTO.getModalitaLavoro();
     	this.occupazione = regUtenteDTO.getOccupazione();
     }
 
@@ -109,13 +106,7 @@ public class Utente {
         this.ruolo = ruolo;
     }
 
-    public ModalitaLavoro getModalitaLavoro() {
-		return modalitaLavoro;
-	}
-
-	public void setModalitaLavoro(ModalitaLavoro modalitaLavoro) {
-		this.modalitaLavoro = modalitaLavoro;
-	}
+    
 
 	public Occupazione getOccupazione() {
         return occupazione;
