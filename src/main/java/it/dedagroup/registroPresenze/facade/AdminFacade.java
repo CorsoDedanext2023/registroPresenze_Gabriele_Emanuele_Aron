@@ -1,14 +1,18 @@
 package it.dedagroup.registroPresenze.facade;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.mapper.UtenteMapper;
+import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
-import it.dedagroup.registroPresenze.service.model.AdminService;
+import it.dedagroup.registroPresenze.service.AdminService;
 
 @Service
 public class AdminFacade {
@@ -29,5 +33,13 @@ public class AdminFacade {
 	
 	public  ResponseUtenteDTO getUtenteByUsername(String username) {
 		return mapperA.toUtenteDTO(admin.getUtenteByUsername(username));
+	}
+	
+	public ResponseUtenteDTO registrazione(RequestRegistrazioneUtenteDTO request) {
+		return mapperA.toUtenteDTO(admin.registrazioneUtente(request));
+	}
+	
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll(){
+		return admin.findAll();
 	}
 }

@@ -1,16 +1,25 @@
 package it.dedagroup.registroPresenze.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.facade.AdminFacade;
+import it.dedagroup.registroPresenze.model.ModalitaLavoro;
+import it.dedagroup.registroPresenze.model.Utente;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value="admin")
@@ -32,4 +41,16 @@ public class AdminController {
 	public ResponseEntity<ResponseUtenteDTO> getUtenteByUsername(@PathVariable String username){
 		return ResponseEntity.ok(facadeA.getUtenteByUsername(username));
 	}
+	
+	@PostMapping("/registrazione")
+	public ResponseEntity<ResponseUtenteDTO> registrazione (@Valid @RequestBody RequestRegistrazioneUtenteDTO request) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(facadeA.registrazione(request));
+	}
+	
+	@GetMapping("utente/allpresenze")
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll(){
+		return facadeA.findAll();
+	}
+	
+	
 }
