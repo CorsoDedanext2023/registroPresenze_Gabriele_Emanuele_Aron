@@ -1,6 +1,4 @@
 package it.dedagroup.registroPresenze.service.impl;
-
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;

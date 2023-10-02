@@ -40,6 +40,7 @@ public class UtenteController {
 	}
 	@PostMapping("/addPresenza")
 	public ResponseEntity<String> addPresenza(long idUtente, LocalDateTime dataOra, ModalitaLavoro modalita){
+		facadeU.addPresenza((long)httpSession.getAttribute("id"), dataOra, modalita);
 		return ResponseEntity.ok("presenza aggiunta");
 	}
 }

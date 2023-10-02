@@ -27,7 +27,7 @@ public class UtenteFacade {
 	
 	public ResponseUtenteDTO login(RequestLoginUtenteDTO request) {
         Utente utente = serviceU.login(request);
-        httpSession.setAttribute("username", utente.getUsername());
+        httpSession.setAttribute("id", utente.getId());
         return mapperU.toUtenteDTO(utente);
     }
 
