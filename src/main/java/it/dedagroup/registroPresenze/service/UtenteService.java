@@ -1,15 +1,17 @@
-package it.dedagroup.registroPresenze.service.model;
+package it.dedagroup.registroPresenze.service;
+
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
 import it.dedagroup.registroPresenze.DTO.RequestLoginUtenteDTO;
-import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
+import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
 
 @Service
 public interface UtenteService {
 	
-	public Utente registrazione(RequestRegistrazioneUtenteDTO request);
+	
 	public Utente login(RequestLoginUtenteDTO request);
-
+	 public void addPresenza(long idUtente, LocalDateTime dataOra, ModalitaLavoro modalita);
 }
