@@ -66,22 +66,6 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getPasswordRipetuta() {
 		return passwordRipetuta;
 	}
@@ -91,22 +75,20 @@ public class Utente {
 	}
 
 	public int getEta() {
-        return eta;
-    }
+		return eta;
+	}
 
-    public void setEta(int eta) {
-        this.eta = eta;
-    }
 
-    public Ruolo getRuolo() {
-        return ruolo;
-    }
+	public void setEta(int eta) {
+		this.eta = eta;
+	}
 
-    public void setRuolo(Ruolo ruolo) {
-        this.ruolo = ruolo;
-    }
 
-    
+	public Ruolo getRuolo() {
+		return ruolo;
+	}
+
+
 
 	public Occupazione getOccupazione() {
         return occupazione;
@@ -132,6 +114,38 @@ public class Utente {
 		Utente other = (Utente) obj;
 		return Objects.equals(cognome, other.cognome) && eta == other.eta && id == other.id
 				&& Objects.equals(nome, other.nome) && occupazione == other.occupazione && ruolo == other.ruolo;
+	}
+
+	public static long getIdCounter() {
+		return idCounter;
+	}
+
+	public static void setIdCounter(long idCounter) {
+		Utente.idCounter = idCounter;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
 	}
 
 	@Override

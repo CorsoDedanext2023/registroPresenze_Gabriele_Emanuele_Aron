@@ -32,10 +32,6 @@ public class Singleton {
         righePresenze.put(utente, presenza);
     }
 
-    public Optional<Utente> getUtente(long id) {
-        return listaUtenti.stream().filter(u -> u.getId() == id).findFirst();
-    }
-
     public List<Utente> getUtenti() {
         return listaUtenti;
     }
