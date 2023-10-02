@@ -1,14 +1,16 @@
 package it.dedagroup.registroPresenze.service.impl;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-
-import javax.management.RuntimeErrorException;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
+import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
-import it.dedagroup.registroPresenze.service.model.AdminService;
+import it.dedagroup.registroPresenze.service.AdminService;
 import it.dedagroup.registroPresenze.singleton.Singleton;
 
 @Service
@@ -34,6 +36,30 @@ public class AdminServiceImpl  implements AdminService{
 		return utente;
 	}
 	
+	@Override
+	public Utente registrazioneUtente(RequestRegistrazioneUtenteDTO request) {
+		Utente existingUser = Singleton.getInstance().getUtenteByUsername(request.getUsername()).orElse(null);
+		if(existingUser != null) {
+			throw new RuntimeException("username gia in uso!");
+		}
+		if(!request.getPassword().equals(request.getPasswordRipetuta())) {
+			throw new RuntimeException("le password non corrispondono");
+		}
+		
+		Utente newUser = new Utente(request);
+		Singleton.getInstance().addUtente(newUser);
+		return newUser;
+	}
+
+	@Override
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll() {
+		return Singleton.getInstance().findAll();
+	}
+
 	
+		
+		
+
+
 
 }
