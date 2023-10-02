@@ -1,6 +1,5 @@
 package it.dedagroup.registroPresenze.DTO;
 
-import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Occupazione;
 import it.dedagroup.registroPresenze.model.Ruolo;
 
