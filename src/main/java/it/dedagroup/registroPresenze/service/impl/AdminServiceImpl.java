@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
-import it.dedagroup.registroPresenze.service.AdminService;
+import it.dedagroup.registroPresenze.service.model.AdminService;
 import it.dedagroup.registroPresenze.singleton.Singleton;
 
 @Service

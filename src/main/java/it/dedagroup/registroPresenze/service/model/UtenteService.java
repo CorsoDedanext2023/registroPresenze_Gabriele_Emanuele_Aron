@@ -1,4 +1,4 @@
-package it.dedagroup.registroPresenze.service;
+package it.dedagroup.registroPresenze.service.model;
 
 import java.time.LocalDateTime;
 

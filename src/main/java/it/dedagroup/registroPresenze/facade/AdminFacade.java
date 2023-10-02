@@ -12,7 +12,7 @@ import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.mapper.UtenteMapper;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
-import it.dedagroup.registroPresenze.service.AdminService;
+import it.dedagroup.registroPresenze.service.model.AdminService;
 
 @Service
 public class AdminFacade {

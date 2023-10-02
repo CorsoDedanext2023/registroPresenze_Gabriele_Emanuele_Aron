@@ -11,7 +11,7 @@ import it.dedagroup.registroPresenze.mapper.UtenteMapper;
 import it.dedagroup.registroPresenze.model.Utente;
 import jakarta.servlet.http.HttpSession;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
-import it.dedagroup.registroPresenze.service.UtenteService;
+import it.dedagroup.registroPresenze.service.model.UtenteService;
 
 @Service
 public class UtenteFacade {
