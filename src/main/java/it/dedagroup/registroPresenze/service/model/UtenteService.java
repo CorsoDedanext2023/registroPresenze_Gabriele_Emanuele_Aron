@@ -1,6 +1,8 @@
-package it.dedagroup.registroPresenze.service;
+package it.dedagroup.registroPresenze.service.model;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,6 @@ public interface UtenteService {
 	
 	
 	public Utente login(RequestLoginUtenteDTO request);
-	 public void addPresenza(long idUtente, LocalDateTime dataOra, ModalitaLavoro modalita);
+	public void addPresenza(long idUtente, LocalDateTime dataOra, ModalitaLavoro modalita);
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByMonth(Month mese, long idUtente);
 }

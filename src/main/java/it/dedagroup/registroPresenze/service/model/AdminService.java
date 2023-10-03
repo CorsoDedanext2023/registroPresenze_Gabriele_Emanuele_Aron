@@ -1,4 +1,4 @@
-package it.dedagroup.registroPresenze.service;
+package it.dedagroup.registroPresenze.service.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +16,7 @@ public interface AdminService {
 	public Utente getUtenteById(long id) ;
 	public Utente getUtenteByUsername(String username) ;
 	public Utente registrazioneUtente(RequestRegistrazioneUtenteDTO request);
-	 public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll();
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente);
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll();
 
 }
