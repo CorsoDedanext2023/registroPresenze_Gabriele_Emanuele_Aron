@@ -33,7 +33,7 @@ public class UtenteController {
 	
 	
 	@PostMapping("/login")
-	public ResponseEntity<ResponseUtenteDTO> registrazione (@Valid @RequestBody RequestLoginUtenteDTO request) {
+	public ResponseEntity<ResponseUtenteDTO> login (@Valid @RequestBody RequestLoginUtenteDTO request) {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(facadeU.login(request));
 	}
 	
