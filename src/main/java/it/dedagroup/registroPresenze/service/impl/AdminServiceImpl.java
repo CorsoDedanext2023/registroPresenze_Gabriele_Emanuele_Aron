@@ -53,11 +53,9 @@ public class AdminServiceImpl  implements AdminService{
 	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll() {
 		return Singleton.getInstance().findAll();
 	}
-
 	
-		
-		
-
-
-
+	@Override
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente) {
+		return Singleton.getInstance().getPresenzeByUtente(utente);
+	}
 }

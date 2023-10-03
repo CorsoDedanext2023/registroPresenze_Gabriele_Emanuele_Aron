@@ -1,6 +1,8 @@
 package it.dedagroup.registroPresenze.facade;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +25,7 @@ public class UtenteFacade {
 	@Autowired
     HttpSession httpSession;
 	
-	
-	
+
 	public ResponseUtenteDTO login(RequestLoginUtenteDTO request) {
         Utente utente = serviceU.login(request);
         httpSession.setAttribute("id", utente.getId());
@@ -32,7 +33,13 @@ public class UtenteFacade {
     }
 
 	
-	public void addPresenza(long idUtente, LocalDateTime dataOra, ModalitaLavoro modalita) {
-	serviceU.addPresenza(idUtente, dataOra, modalita);
+	public void addPresenza(LocalDateTime dataOra, ModalitaLavoro modalita) {
+		long idUtente = (long) httpSession.getAttribute("id");
+		serviceU.addPresenza(idUtente, dataOra, modalita);
+	}
+	
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByMonth(Month mese) {
+		long idUtente = (long) httpSession.getAttribute("id");
+		return serviceU.getPresenzeByMonth(mese, idUtente);
 	}
 }

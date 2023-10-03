@@ -54,6 +54,10 @@ public class Singleton {
                 .findFirst();
     }
     
+    public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente) {
+        return righePresenze.getOrDefault(utente, new HashMap<>());
+    }
+    
     public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll() {
         return righePresenze;
     }  
