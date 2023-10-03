@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.dedagroup.registroPresenze.DTO.RequestGiorno;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.facade.AdminFacade;
@@ -42,6 +43,11 @@ public class AdminController {
 		return ResponseEntity.ok(facadeA.getUtenteByUsername(username));
 	}
 	
+	@GetMapping("utente/cognome/{cognome}")
+	public ResponseEntity<ResponseUtenteDTO> getUtenteByCognome(@PathVariable String cognome){
+		return ResponseEntity.ok(facadeA.getUtenteByUsername(cognome));
+	}
+	
 	@PostMapping("/registrazione")
 	public ResponseEntity<ResponseUtenteDTO> registrazione (@Valid @RequestBody RequestRegistrazioneUtenteDTO request) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(facadeA.registrazione(request));
@@ -52,5 +58,14 @@ public class AdminController {
 		return facadeA.findAll();
 	}
 	
+	@GetMapping("utente/presenze/idUtente/{idUtente}")
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdUtente(@PathVariable long idUtente) {
+		return facadeA.getPresenzeByUtente(idUtente);
+	}
+	
+	@GetMapping("utente/presenze/giorno")
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(@RequestBody RequestGiorno giorno) {
+		return facadeA.getAllPresenzeByGiorno(giorno);
+	}
 	
 }

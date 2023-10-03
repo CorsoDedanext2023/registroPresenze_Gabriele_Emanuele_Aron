@@ -1,10 +1,12 @@
 package it.dedagroup.registroPresenze.service.impl;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import it.dedagroup.registroPresenze.DTO.RequestGiorno;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
@@ -56,6 +58,22 @@ public class AdminServiceImpl  implements AdminService{
 	
 	@Override
 	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente) {
+		if (utente==null) throw new RuntimeException("utente non trovato");
 		return Singleton.getInstance().getPresenzeByUtente(utente);
 	}
+
+	@Override
+	public Utente getUtenteByCognome(String cognome) {
+		if(cognome==null) throw new RuntimeException("username non valido");
+		Utente utente=Singleton.getInstance().getUtenteByUsername(cognome).orElseThrow(()->new RuntimeException("utente non trovato"));
+		return utente;
+	}
+
+	@Override
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiorno giorno) {
+		LocalDate data= LocalDate.of(giorno.getAnno(), giorno.getMese(), giorno.getGiorno());
+		 return Singleton.getInstance().getAllPresenzeByGiorno(data);
+	}
+	
+	
 }

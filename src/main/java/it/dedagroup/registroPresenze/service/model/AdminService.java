@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import it.dedagroup.registroPresenze.DTO.RequestGiorno;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
@@ -18,5 +19,6 @@ public interface AdminService {
 	public Utente registrazioneUtente(RequestRegistrazioneUtenteDTO request);
 	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente);
 	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll();
-
+	public Utente getUtenteByCognome(String cognome);
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiorno giorno);
 }

@@ -1,5 +1,6 @@
 package it.dedagroup.registroPresenze.singleton;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,12 @@ public class Singleton {
                 .findFirst();
     }
     
+    public Optional<Utente> getUtenteByCognome(String cognome) {
+        return listaUtenti.stream()
+                .filter(utente -> utente.getCognome().equals(cognome))
+                .findFirst();
+    }
+    
     public Optional<Utente> getUtenteByUsername(String username) {
         return listaUtenti.stream()
                 .filter(utente -> utente.getUsername().equals(username))
@@ -61,4 +68,21 @@ public class Singleton {
     public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll() {
         return righePresenze;
     }  
+    
+    public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(LocalDate giorno) {
+        Map<Utente, ModalitaLavoro> presenzeGiorno = new HashMap<>();
+
+        for (Utente utente : listaUtenti) {
+            Map<LocalDateTime, ModalitaLavoro> presenzeUtente = righePresenze.get(utente);
+            if (presenzeUtente != null) {
+                Optional<Map.Entry<LocalDateTime, ModalitaLavoro>> presenza = presenzeUtente.entrySet().stream()
+                        .filter(entry -> entry.getKey().toLocalDate().equals(giorno))
+                        .findFirst();
+
+                presenza.ifPresent(entry -> presenzeGiorno.put(utente, entry.getValue()));
+            }
+        }
+
+        return presenzeGiorno;
+    }
 }

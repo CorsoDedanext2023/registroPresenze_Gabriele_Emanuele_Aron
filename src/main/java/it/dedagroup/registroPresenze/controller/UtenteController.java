@@ -19,7 +19,6 @@ import it.dedagroup.registroPresenze.DTO.RequestRegistraPresenzaDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.facade.UtenteFacade;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @RestController()
