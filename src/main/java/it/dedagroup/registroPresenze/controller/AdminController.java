@@ -58,6 +58,11 @@ public class AdminController {
 		return facadeA.findAll();
 	}
 	
+	@GetMapping("utente/allpresenze/ordered")
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered(){
+		return facadeA.findAllOrdered();
+	}
+	
 	@GetMapping("utente/presenze/idUtente/{idUtente}")
 	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdUtente(@PathVariable long idUtente) {
 		return facadeA.getPresenzeByUtente(idUtente);

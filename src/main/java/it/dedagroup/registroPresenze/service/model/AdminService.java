@@ -19,6 +19,7 @@ public interface AdminService {
 	public Utente registrazioneUtente(RequestRegistrazioneUtenteDTO request);
 	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(Utente utente);
 	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll();
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered();
 	public Utente getUtenteByCognome(String cognome);
 	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiorno giorno);
 }

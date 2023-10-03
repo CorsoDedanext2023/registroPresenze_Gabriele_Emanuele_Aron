@@ -4,9 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
@@ -67,7 +69,22 @@ public class Singleton {
     
     public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll() {
         return righePresenze;
-    }  
+    }
+    
+    public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered() {
+    	
+        Map<Utente, Map<LocalDateTime, ModalitaLavoro>> orderedPresenze = new LinkedHashMap<>();
+
+        for (Map.Entry<Utente, Map<LocalDateTime, ModalitaLavoro>> entry : righePresenze.entrySet()) {
+            Utente utente = entry.getKey();
+            Map<LocalDateTime, ModalitaLavoro> presenzeUtente = entry.getValue();
+            Map<LocalDateTime, ModalitaLavoro> sortedPresenzeUtente = new TreeMap<>(presenzeUtente);
+            orderedPresenze.put(utente, sortedPresenzeUtente);
+        }
+
+        return orderedPresenze;
+    }
+
     
     public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(LocalDate giorno) {
         Map<Utente, ModalitaLavoro> presenzeGiorno = new HashMap<>();

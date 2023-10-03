@@ -74,6 +74,11 @@ public class AdminServiceImpl  implements AdminService{
 		LocalDate data= LocalDate.of(giorno.getAnno(), giorno.getMese(), giorno.getGiorno());
 		 return Singleton.getInstance().getAllPresenzeByGiorno(data);
 	}
+
+	@Override
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered() {
+		return Singleton.getInstance().findAllOrdered();
+	}
 	
 	
 }

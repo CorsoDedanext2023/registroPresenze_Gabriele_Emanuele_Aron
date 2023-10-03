@@ -47,6 +47,9 @@ public class AdminFacade {
 	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAll(){
 		return admin.findAll();
 	}
+	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered(){
+		return admin.findAllOrdered();
+	}
 	
 	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByUtente(long idUtente) {
 		Utente utente=admin.getUtenteById(idUtente);
