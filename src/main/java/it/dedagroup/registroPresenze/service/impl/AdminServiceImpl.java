@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import it.dedagroup.registroPresenze.DTO.RequestGiorno;
+import it.dedagroup.registroPresenze.DTO.RequestGiornoDTO;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
@@ -70,7 +70,7 @@ public class AdminServiceImpl  implements AdminService{
 	}
 
 	@Override
-	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiorno giorno) {
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiornoDTO giorno) {
 		LocalDate data= LocalDate.of(giorno.getAnno(), giorno.getMese(), giorno.getGiorno());
 		 return Singleton.getInstance().getAllPresenzeByGiorno(data);
 	}
@@ -78,6 +78,15 @@ public class AdminServiceImpl  implements AdminService{
 	@Override
 	public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered() {
 		return Singleton.getInstance().findAllOrdered();
+	}
+	@Override
+    public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> getPresenzeByModalitaLavoro(ModalitaLavoro modalita) {
+    	return Singleton.getInstance().getPresenzeByModalitaLavoro(modalita);
+    }
+
+	@Override
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdAndModalitaLavoro(long idUtente, ModalitaLavoro modalita) {
+		return Singleton.getInstance().getPresenzeByIdAndModalitaLavoro(idUtente, modalita);
 	}
 	
 	

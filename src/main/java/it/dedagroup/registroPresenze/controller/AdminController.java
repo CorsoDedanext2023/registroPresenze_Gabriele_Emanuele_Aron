@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.dedagroup.registroPresenze.DTO.RequestGiorno;
+import it.dedagroup.registroPresenze.DTO.RequestGiornoDTO;
+import it.dedagroup.registroPresenze.DTO.RequestPresenzeByIdAndModalitaLavoroDTO;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.facade.AdminFacade;
@@ -69,8 +70,18 @@ public class AdminController {
 	}
 	
 	@GetMapping("utente/presenze/giorno")
-	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(@RequestBody RequestGiorno giorno) {
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(@RequestBody RequestGiornoDTO giorno) {
 		return facadeA.getAllPresenzeByGiorno(giorno);
 	}
+	
+	@GetMapping("utente/presenze/modalitaLavoro/{modalita}")
+    public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> getPresenzeByModalitaLavoro(@PathVariable ModalitaLavoro modalita) {
+		return facadeA.getPresenzeByModalitaLavoro(modalita);
+	}
+	@GetMapping("utente/presenze/modalitaLavoro")
+	public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdAndModalitaLavoro(@RequestBody RequestPresenzeByIdAndModalitaLavoroDTO rDTO) {
+		return facadeA.getPresenzeByIdAndModalitaLavoro(rDTO.getIdUtente(), rDTO.getModalitaLavoro());
+	}
+	
 	
 }

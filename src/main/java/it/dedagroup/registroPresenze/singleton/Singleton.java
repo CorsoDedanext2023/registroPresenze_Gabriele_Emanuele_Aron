@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import it.dedagroup.registroPresenze.model.ModalitaLavoro;
 import it.dedagroup.registroPresenze.model.Utente;
@@ -72,7 +73,6 @@ public class Singleton {
     }
     
     public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> findAllOrdered() {
-    	
         Map<Utente, Map<LocalDateTime, ModalitaLavoro>> orderedPresenze = new LinkedHashMap<>();
 
         for (Map.Entry<Utente, Map<LocalDateTime, ModalitaLavoro>> entry : righePresenze.entrySet()) {
@@ -102,4 +102,30 @@ public class Singleton {
 
         return presenzeGiorno;
     }
+
+    public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdAndModalitaLavoro(long idUtente, ModalitaLavoro modalita) {
+        Optional<Utente> optionalUtente = getUtenteById(idUtente);
+        if (!optionalUtente.isPresent()) {
+            return new HashMap<>();
+        }
+        Utente utente = optionalUtente.get();
+        Map<LocalDateTime, ModalitaLavoro> presenzeUtente = getPresenzeByUtente(utente);
+        return presenzeUtente.entrySet().stream()
+                             .filter(entry -> entry.getValue() == modalita)
+                             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> getPresenzeByModalitaLavoro(ModalitaLavoro modalita) {
+        Map<Utente, Map<LocalDateTime, ModalitaLavoro>> presenzeFiltered = new HashMap<>();
+        for (Map.Entry<Utente, Map<LocalDateTime, ModalitaLavoro>> entry : righePresenze.entrySet()) {
+            Map<LocalDateTime, ModalitaLavoro> presenzeUtente = entry.getValue().entrySet().stream()
+                                                                  .filter(innerEntry -> innerEntry.getValue() == modalita)
+                                                                  .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            if (!presenzeUtente.isEmpty()) {
+                presenzeFiltered.put(entry.getKey(), presenzeUtente);
+            }
+        }
+        return presenzeFiltered;
+    }
+
 }

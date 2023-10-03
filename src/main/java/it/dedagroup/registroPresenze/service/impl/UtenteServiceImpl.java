@@ -49,5 +49,4 @@ public class UtenteServiceImpl implements UtenteService{
                              .filter(entry -> entry.getKey().getMonth() == mese)
                              .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
-	
 }

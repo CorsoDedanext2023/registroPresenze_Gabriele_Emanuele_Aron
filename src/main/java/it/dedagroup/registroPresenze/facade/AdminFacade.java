@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.dedagroup.registroPresenze.DTO.RequestGiorno;
+import it.dedagroup.registroPresenze.DTO.RequestGiornoDTO;
 import it.dedagroup.registroPresenze.DTO.RequestRegistrazioneUtenteDTO;
 import it.dedagroup.registroPresenze.DTO.ResponseUtenteDTO;
 import it.dedagroup.registroPresenze.mapper.UtenteMapper;
@@ -56,7 +56,16 @@ public class AdminFacade {
 		return admin.getPresenzeByUtente(utente);
 	}
 	
-	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiorno giorno) {
+	public Map<Utente, ModalitaLavoro> getAllPresenzeByGiorno(RequestGiornoDTO giorno) {
 		return admin.getAllPresenzeByGiorno(giorno);
 	}
+	
+    public Map<Utente, Map<LocalDateTime, ModalitaLavoro>> getPresenzeByModalitaLavoro(ModalitaLavoro modalita) {
+    	return admin.getPresenzeByModalitaLavoro(modalita);
+    }
+    
+    public Map<LocalDateTime, ModalitaLavoro> getPresenzeByIdAndModalitaLavoro(long idUtente, ModalitaLavoro modalita) {
+    	return admin.getPresenzeByIdAndModalitaLavoro(idUtente, modalita);
+    }
+
 }
