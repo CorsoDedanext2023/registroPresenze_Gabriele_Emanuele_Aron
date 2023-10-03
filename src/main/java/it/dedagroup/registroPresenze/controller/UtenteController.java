@@ -27,19 +27,11 @@ public class UtenteController {
 	
 	@Autowired
 	UtenteFacade facadeU;
-//	@Autowired
-//    HttpSession httpSession;
-	
 	
 	@PostMapping("/login")
 	public ResponseEntity<ResponseUtenteDTO> login (@Valid @RequestBody RequestLoginUtenteDTO request) {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(facadeU.login(request));
 	}
-	
-//	@GetMapping("/get")
-//	public String getUsername() {
-//		return httpSession.getAttribute("id").toString();
-//	}
 	@PostMapping("/addPresenza")
 	public ResponseEntity<String> addPresenza(@RequestBody RequestRegistraPresenzaDTO rDTO){
 		facadeU.addPresenza(rDTO.getDataOra(), rDTO.getModalitaLavoro());

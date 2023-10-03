@@ -1,6 +1,6 @@
 package it.dedagroup.registroPresenze.DTO;
 
-public class RequestGiorno {
+public class RequestGiornoDTO {
 
 	private int giorno;
 	private int mese;
