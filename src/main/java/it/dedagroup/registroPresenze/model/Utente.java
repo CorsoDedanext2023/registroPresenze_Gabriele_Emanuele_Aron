@@ -26,7 +26,17 @@ public class Utente {
         this.id = ++idCounter;
     }
 
-
+    public Utente(RequestRegistrazioneUtenteDTO regUtenteDTO) {
+    	this.id = ++idCounter;
+    	this.nome = regUtenteDTO.getNome();
+    	this.cognome = regUtenteDTO.getCognome();
+    	this.username = regUtenteDTO.getUsername();
+    	this.password = regUtenteDTO.getPassword();
+    	this.passwordRipetuta = regUtenteDTO.getPasswordRipetuta();
+    	this.eta = regUtenteDTO.getEta();
+    	this.ruolo = regUtenteDTO.getRuolo();
+    	this.occupazione = regUtenteDTO.getOccupazione();
+    }
     
 }
 
