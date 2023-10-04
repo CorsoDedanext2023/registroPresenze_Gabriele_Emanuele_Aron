@@ -46,7 +46,15 @@ public class AdminServiceImpl  implements AdminService{
 			throw new RuntimeException("le password non corrispondono");
 		}
 		
-		Utente newUser = new Utente(request);
+		Utente newUser = new Utente();
+    	newUser.setNome( request.getNome());
+    	newUser.setCognome( request.getCognome());
+    	newUser.setUsername( request.getUsername());
+    	newUser.setPassword( request.getPassword());
+    	newUser.setPasswordRipetuta( request.getPasswordRipetuta());
+    	newUser.setEta( request.getEta());
+    	newUser.setRuolo( request.getRuolo());
+    	newUser.setOccupazione( request.getOccupazione());
 		Singleton.getInstance().addUtente(newUser);
 		return newUser;
 	}
